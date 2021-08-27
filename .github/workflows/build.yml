@@ -32,3 +32,5 @@ jobs:
           cd build
           cmake ..
           make
+      - name:  Test Example
+        run: ./build/src/exe_example
