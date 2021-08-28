@@ -9,7 +9,7 @@ class CppExampleConan(ConanFile):
     url = "https://github.com/bmdallas/cpp_example"
     description = "Example C++ Code for Interviews"
     topics = ("C++", "Interview")
-    requires = ("boost/1.76.0")
+    requires = ("boost/1.75.0")
     build_requires = ("gtest/1.11.0")
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
