@@ -36,4 +36,6 @@ jobs:
           conan install ..
           conan build ..
       - name:  Test Example
-        run: make test
+        run: |
+            cd build
+            make test
