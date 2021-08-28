@@ -33,4 +33,4 @@ jobs:
           cmake ..
           make
       - name:  Test Example
-        run: ./build/src/exe_example
+        run: make test
