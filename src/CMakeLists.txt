@@ -15,12 +15,18 @@ add_library(example
     ${example_sources}
 )
 
+# Link our library against boost
+target_link_libraries(example
+    CONAN_PKG::boost
+)
+
 # Add an executable target (exe_example) that compiles main.cpp into an executable
 add_executable(exe_example
     main.cpp
 )
 
-# Ensure that the executable links against the example target library
+# Ensure that the executable links against the example target library and boost
 target_link_libraries(exe_example
     example
+    CONAN_PKG::boost
 )
