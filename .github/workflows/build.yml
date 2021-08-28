@@ -26,7 +26,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install conan
-        run: pip3 install setuptools conan
+        run: |
+            pip3 install setuptools
+            pip3 install conan
       - name: Build Example
         run: |
           mkdir build
