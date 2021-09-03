@@ -24,7 +24,7 @@ cpmaddpackage(
 
 # This requires at least CMake 3.8 Set the standard for C++ to 17 and require
 # that it be available
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # This is used to enable conan integration.
