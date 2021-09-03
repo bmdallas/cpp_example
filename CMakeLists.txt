@@ -1,5 +1,5 @@
-# Set the minimum cmake version. There is nothing spectacular about this
-# cmake structure so, 3.0 is more than enough
+# Set the minimum cmake version. There is nothing spectacular about this cmake
+# structure so, 3.0 is more than enough
 cmake_minimum_required(VERSION 3.0)
 
 # Setup the name of the project
@@ -9,15 +9,17 @@ project(CPlusPlusCodingExample)
 include(cmake/CPM.cmake)
 
 # Add the CMake Format package from TheLartians
-CPMAddPackage(
-  NAME Format.cmake
-  VERSION 1.7.0
-  GITHUB_REPOSITORY TheLartians/Format.cmake
+cpmaddpackage(
+  NAME
+  Format.cmake
+  VERSION
+  1.7.0
+  GITHUB_REPOSITORY
+  TheLartians/Format.cmake
   OPTIONS # set to yes skip cmake formatting
-          "FORMAT_SKIP_CMAKE NO"
-          # path to exclude (optional, supports regular expressions)
-          "CMAKE_FORMAT_EXCLUDE cmake/CPM.cmake"
-)
+  "FORMAT_SKIP_CMAKE NO"
+  # path to exclude (optional, supports regular expressions)
+  "CMAKE_FORMAT_EXCLUDE cmake/CPM.cmake")
 
 # This is used to enable conan integration.
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)

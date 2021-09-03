@@ -1,13 +1,8 @@
 #include "example.h"
 
-namespace linux
-{
+namespace linux {
 
-ACharacterDriver::ACharacterDriver(const std::filesystem::path& path) :
-    _device_path(path)
-{
+ACharacterDriver::ACharacterDriver(const std::filesystem::path &path)
+    : _device_path(path) {}
 
-    
-}
-
-} // namespace linux
+}  // namespace linux
