@@ -28,22 +28,22 @@ class ADriver {
   /**
    * Default copy constructor
    */
-  ADriver(const ADriver & /*other*/) = default;
+  ADriver(const ADriver& /*other*/) = default;
 
   /**
    * Default move constructor
    */
-  ADriver(ADriver && /*other*/) = default;
+  ADriver(ADriver&& /*other*/) = default;
 
   /**
    * Default copy assignment operator
    */
-  auto operator=(const ADriver & /*other*/) -> ADriver & = default;
+  auto operator=(const ADriver & /*other*/) -> ADriver& = default;
 
   /**
    * Default move assignment operator
    */
-  auto operator=(ADriver && /*other*/) -> ADriver & = default;
+  auto operator=(ADriver && /*other*/) -> ADriver& = default;
 
  private:
 };
@@ -65,23 +65,23 @@ class ACharacterDriver : public ADriver {
   /**
    * Default copy constructor
    */
-  ACharacterDriver(const ACharacterDriver & /*other*/) = default;
+  ACharacterDriver(const ACharacterDriver& /*other*/) = default;
 
   /**
    * Default move constructor
    */
-  ACharacterDriver(ACharacterDriver && /*other*/) = default;
+  ACharacterDriver(ACharacterDriver&& /*other*/) = default;
 
   /**
    * Default copy assignment operator
    */
   auto operator=(const ACharacterDriver & /*other*/)
-      -> ACharacterDriver & = default;
+      -> ACharacterDriver& = default;
 
   /**
    * Default move assignment operator
    */
-  auto operator=(ACharacterDriver && /*other*/) -> ACharacterDriver & = default;
+  auto operator=(ACharacterDriver && /*other*/) -> ACharacterDriver& = default;
 
  private:
   //! This holds the filesystem path to the device (e.g. /dev/tty0)
