@@ -33,9 +33,10 @@ jobs:
             pip3 install cmake-format
       - name: Install llvm tools
         run: |
-            sudo apt install clang-format-12 clang-tidy-12
+            sudo apt install clang-format-10 clang-tidy-10
       - name: Build Example
         run: |
+          export PATH=/usr/lib/llvm-10/bin:$PATH
           mkdir build
           cd build
           conan install ..
