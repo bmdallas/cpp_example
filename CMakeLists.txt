@@ -19,7 +19,8 @@ cpmaddpackage(
   OPTIONS # set to yes skip cmake formatting
   "FORMAT_SKIP_CMAKE NO"
   # path to exclude (optional, supports regular expressions)
-  "CMAKE_FORMAT_EXCLUDE cmake/CPM.cmake")
+  # "CMAKE_FORMAT_EXCLUDE cmake/CPM.cmake")
+)
 
 # This requires at least CMake 3.8 Set the standard for C++ to 17 and require
 # that it be available
