@@ -31,11 +31,11 @@ jobs:
             pip3 install setuptools
             pip3 install conan
             pip3 install cmake-format
-      - name: Install llvm tools and updated gcc
+      - name: Install llvm tools, doxygen, and updated gcc
         run: |
             sudo add-apt-repository ppa:ubuntu-toolchain-r/test
             sudo apt update
-            sudo apt install gcc-9 g++-9 clang-format-10 clang-tidy-10
+            sudo apt install gcc-9 g++-9 clang-format-10 clang-tidy-10 doxygen dot2tex
             sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 7
             sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 7
             sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9
