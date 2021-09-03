@@ -2,7 +2,7 @@
 
 #include "util/driver.h"
 
-int main(int argc, char **argv) {
+auto main(int argc, char **argv) -> int {
   // Use a shared_ptr to ensure that it is cleaned up when the
   // program exits.
   auto example_ptr =

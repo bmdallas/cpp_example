@@ -1,5 +1,5 @@
-// Most modern compilers support this now.
-#pragma once
+#ifndef PUBLIC_UTIL_DRIVER_H
+#define PUBLIC_UTIL_DRIVER_H
 
 // This include is minimum C++17 compatible
 #include <filesystem>
@@ -25,6 +25,26 @@ class ADriver {
    */
   virtual ~ADriver() = default;
 
+  /**
+   * Default copy constructor
+   */
+  ADriver(const ADriver & /*other*/) = default;
+
+  /**
+   * Default move constructor
+   */
+  ADriver(ADriver && /*other*/) = default;
+
+  /**
+   * Default copy assignment operator
+   */
+  auto operator=(const ADriver & /*other*/) -> ADriver & = default;
+
+  /**
+   * Default move assignment operator
+   */
+  auto operator=(ADriver && /*other*/) -> ADriver & = default;
+
  private:
 };
 
@@ -34,7 +54,7 @@ class ACharacterDriver : public ADriver {
    * The default constructor takes a filesystem path that points to the
    * linux character device which the driver will use.
    */
-  explicit ACharacterDriver(const std::filesystem::path &);
+  explicit ACharacterDriver(std::filesystem::path /*path*/);
 
   /**
    * This is the destructor, uses the C++11 compatible override keyword
@@ -42,9 +62,32 @@ class ACharacterDriver : public ADriver {
    */
   ~ACharacterDriver() override = default;
 
+  /**
+   * Default copy constructor
+   */
+  ACharacterDriver(const ACharacterDriver & /*other*/) = default;
+
+  /**
+   * Default move constructor
+   */
+  ACharacterDriver(ACharacterDriver && /*other*/) = default;
+
+  /**
+   * Default copy assignment operator
+   */
+  auto operator=(const ACharacterDriver & /*other*/)
+      -> ACharacterDriver & = default;
+
+  /**
+   * Default move assignment operator
+   */
+  auto operator=(ACharacterDriver && /*other*/) -> ACharacterDriver & = default;
+
  private:
   //! This holds the filesystem path to the device (e.g. /dev/tty0)
   std::filesystem::path _device_path;
 };
 
 }  // namespace util::driver
+
+#endif  // PUBLIC_UTIL_DRIVER_H

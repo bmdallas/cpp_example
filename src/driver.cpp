@@ -2,7 +2,7 @@
 
 namespace util::driver {
 
-ACharacterDriver::ACharacterDriver(const std::filesystem::path &path)
-    : _device_path(path) {}
+ACharacterDriver::ACharacterDriver(std::filesystem::path path)
+    : _device_path(std::move(path)) {}
 
 }  // namespace util::driver

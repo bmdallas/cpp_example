@@ -2,6 +2,12 @@
 # testing is easier because the library can be linked into both the unit test
 # and the executable
 
+# This line requires CMake 3.7.2 minimum
+set(CMAKE_CXX_CLANG_TIDY
+    clang-tidy -header-filter=.
+    -checks=clang-*,modernize-*,cppcoreguidelines-*,performance-*,google-*
+    -warnings-as-errors=*)
+
 # Set up a variable to hold the example sources, this can be convenient if you
 # end up needing them for something else later
 set(example_sources driver.cpp)
