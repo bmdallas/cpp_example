@@ -53,6 +53,7 @@ jobs:
             make test
       - name: Test Formatting
         run: |
+            git config --local clangformat.style Google
             cd build
             make format
             make check-format
