@@ -4,7 +4,7 @@
 
 # Set up a variable to hold the example sources, this can be convenient if you
 # end up needing them for something else later
-set(example_sources example.cpp)
+set(example_sources driver.cpp)
 
 # Add a library target that compiles the example_sources into a library called
 # example_lib. On Linux this will turn into libexample.[so,a] depeding on if it

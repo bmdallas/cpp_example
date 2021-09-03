@@ -4,7 +4,8 @@
 // This include is minimum C++17 compatible
 #include <filesystem>
 
-namespace linux {
+// This format requires C++17
+namespace util::driver {
 
 /**
  * Currently this class has no functionality, but is used as example
@@ -46,4 +47,4 @@ class ACharacterDriver : public ADriver {
   std::filesystem::path _device_path;
 };
 
-}  // namespace linux
+}  // namespace util::driver

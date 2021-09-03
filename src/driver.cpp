@@ -1,8 +1,8 @@
-#include "example.h"
+#include "util/driver.h"
 
-namespace linux {
+namespace util::driver {
 
 ACharacterDriver::ACharacterDriver(const std::filesystem::path &path)
     : _device_path(path) {}
 
-}  // namespace linux
+}  // namespace util::driver
