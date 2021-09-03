@@ -54,6 +54,7 @@ jobs:
       - name: Test Formatting
         run: |
             cd build
+            make format
             make check-format
       - name: Generate Documentation
         run: |
