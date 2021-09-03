@@ -55,3 +55,7 @@ jobs:
         run: |
             cd build
             make check-format
+      - name: Generate Documentation
+        run: |
+            cd build
+            make doc

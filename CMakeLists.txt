@@ -34,6 +34,15 @@ conan_basic_setup(TARGETS)
 
 include_directories(include/public include/private)
 
+# Find the doxygen package
+find_package(Doxygen
+             REQUIRED dot)
+
+doxygen_add_docs(doc
+    ${PROJECT_SOURCE_DIR}
+    "Generate documentation"
+    DOXYGEN_EXCLUDE_PATTERNS */test/*)
+
 # Include the source subdirectory for the application and libraries
 add_subdirectory(src)
 
