@@ -33,7 +33,7 @@ jobs:
             pip3 install cmake-format
       - name: Install llvm tools
         run: |
-            apt install clang-format-12 clang-tidy-12
+            sudo apt install clang-format-12 clang-tidy-12
       - name: Build Example
         run: |
           mkdir build
