@@ -15,7 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+
+  # This job will ensure that the code builds and links and passes tests correctly
   build:
     # Instead of using latest, which could change in the future, be specific here.
     runs-on: ubuntu-18.04
@@ -26,12 +27,37 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install conan
-        run: pip3 install setuptools conan
+        run: |
+            pip3 install setuptools
+            pip3 install conan
+            pip3 install cmake-format
+      - name: Install llvm tools, doxygen, and updated gcc
+        run: |
+            sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+            sudo apt update
+            sudo apt install gcc-9 g++-9 clang-format-10 clang-tidy-10 doxygen dot2tex
+            sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 7
+            sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 7
+            sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9
+            sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9
       - name: Build Example
         run: |
+          export PATH=/usr/lib/llvm-10/bin:$PATH
           mkdir build
           cd build
           conan install ..
           conan build ..
       - name:  Test Example
-        run: make test
+        run: |
+            cd build
+            make test
+      - name: Test Formatting
+        run: |
+            git config --local clangformat.style Google
+            cd build
+            make format
+            make check-format
+      - name: Generate Documentation
+        run: |
+            cd build
+            make doc
