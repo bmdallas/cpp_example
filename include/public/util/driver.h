@@ -106,7 +106,23 @@ class CharacterDriver : public ADriver {
    */
   template <typename T>
   auto read(std::span<T> read_data) -> bool {
-    return _fd.read(std::as_writable_bytes(read_data), read_data.size_bytes());
+    // NOLINTNEXTLINE
+    _fd.read(reinterpret_cast<char*>(std::as_writable_bytes(read_data).data()),
+             read_data.size_bytes());
+
+    return (_fd ? true : false);
+  }
+
+  /**
+   * This method will write to the device
+   */
+  template <typename T>
+  auto write(std::span<T> write_data) -> bool {
+    // NOLINTNEXTLINE
+    _fd.write(reinterpret_cast<const char*>(std::as_bytes(write_data).data()),
+              write_data.size_bytes());
+
+    return (_fd ? true : false);
   }
 
  private:
