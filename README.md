@@ -25,6 +25,15 @@ make format
 make fix-format
 ```
 
+Manual Testing
+==============
+The main executable trys to write "Hello Driver!"  to a character device, then read from that device. For testing the Linux Device driver found [here](https://github.com/bmdallas/buffer-driver) is used. Here is an example of how to run the manual tests:
+
+```bash
+sudo insmod buffer-driver.ko
+sudo exe_util_driver --device /dev/buffer_driver0
+```
+
 DevOps
 ======
 This repository uses GitHub actions (see files in the .github folder) to build and test the code each time it is pushed to a merge request or the master branch. This pipeline builds the code, runs clang-tidy on the code, check formatting rules using clang-format, and runs tests using Google Test.
