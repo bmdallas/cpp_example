@@ -31,11 +31,13 @@ auto main(int argc, char **argv) -> int {
 
     // Open the device, and check that it worked
     if (example_ptr->open()) {
-      BOOST_LOG_TRIVIAL(info) << "Opened device with name " << example_ptr->getName();
+      BOOST_LOG_TRIVIAL(info)
+          << "Opened device with name " << example_ptr->getName();
 
       // Write "Hello Drivers!" to the opened device
       const std::string example_message = "Hello Drivers!";
-      BOOST_LOG_TRIVIAL(info) << "Writing \"" << example_message << "\" to " << example_ptr->getName();
+      BOOST_LOG_TRIVIAL(info) << "Writing \"" << example_message << "\" to "
+                              << example_ptr->getName();
       if (!example_ptr->write(std::span(example_message))) {
         // The write failed. Notify the user and exit
         BOOST_LOG_TRIVIAL(error) << "Could not write to " << device;

@@ -125,10 +125,12 @@ class CharacterDriver : public ADriver {
   auto open() -> bool override;
 
   /**
-   * This method will read from the device based on the size of the span provided
+   * This method will read from the device based on the size of the span
+   * provided
    *
    * @tparam T Any type, it will automatically be converted from bytes
-   * @param read_data A std::span that holds the data structures that will be read in from the device
+   * @param read_data A std::span that holds the data structures that will be
+   * read in from the device
    * @return True if the read succeeds, False otherwise.
    *
    * TODO(bmdallas) find a way to handle error codes
@@ -146,7 +148,8 @@ class CharacterDriver : public ADriver {
    * This method will write to the device based on span provided
    *
    * @tparam T Any type, it will automatically be converted to bytes
-   * @param read_data A std::span that holds the data structures that will be written to the device
+   * @param read_data A std::span that holds the data structures that will be
+   * written to the device
    * @return True if the write succeeds, False otherwise.
    *
    * TODO(bmdallas) find a way to handle error codes
