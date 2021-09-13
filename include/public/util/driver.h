@@ -48,14 +48,35 @@ class ADriver {
    */
   auto operator=(ADriver && /*other*/) -> ADriver& = default;
 
+  /**
+   * This method will return the name of the device
+   *
+   * @return A string with the name of the device.
+   */
   virtual auto getName() -> const std::string&;
 
+  /**
+   * This is a pure virtual method to be implemented by derived classes
+   * to open the device correctly for their implementation.
+   *
+   * @return True on success, False otherwise
+   */
   virtual auto open() -> bool = 0;
 
  private:
   std::string _name;
 };
 
+/**
+ * This is a Driver that controls Linux Character device drivers
+ * (e.g. /dev/ttyUSB0). It currently implements read and write,
+ * but could be expanded to support mmap, and ioctl calls in the
+ * future. New classes can inherit from this class and add specialized
+ * functions for their specific device.
+ *
+ * This inherits from ADrivers to support polymorphism in as this library
+ * expands.
+ */
 class CharacterDriver : public ADriver {
  public:
   /**
@@ -98,11 +119,19 @@ class CharacterDriver : public ADriver {
   /**
    * This method will open the device provided in the constructor,
    * and will return the status of opening the device.
+   *
+   * @return True if opened, False otherwise
    */
   auto open() -> bool override;
 
   /**
-   * This method will read from the device.
+   * This method will read from the device based on the size of the span provided
+   *
+   * @tparam T Any type, it will automatically be converted from bytes
+   * @param read_data A std::span that holds the data structures that will be read in from the device
+   * @return True if the read succeeds, False otherwise.
+   *
+   * TODO(bmdallas) find a way to handle error codes
    */
   template <typename T>
   auto read(std::span<T> read_data) -> bool {
@@ -114,7 +143,13 @@ class CharacterDriver : public ADriver {
   }
 
   /**
-   * This method will write to the device
+   * This method will write to the device based on span provided
+   *
+   * @tparam T Any type, it will automatically be converted to bytes
+   * @param read_data A std::span that holds the data structures that will be written to the device
+   * @return True if the write succeeds, False otherwise.
+   *
+   * TODO(bmdallas) find a way to handle error codes
    */
   template <typename T>
   auto write(std::span<T> write_data) -> bool {
@@ -128,6 +163,8 @@ class CharacterDriver : public ADriver {
  private:
   //! This holds the filesystem path to the device (e.g. /dev/tty0)
   std::filesystem::path _device_path;
+
+  //! This holds the fstream that is opened for the character device
   std::fstream _fd;
 };
 
