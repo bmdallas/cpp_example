@@ -6,7 +6,10 @@ cmake_minimum_required(VERSION 3.8)
 project(CPlusPlusCodingExample)
 
 # CMake Package Management
-include(cmake/CPM.cmake)
+file(DOWNLOAD
+     https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake
+     ${CMAKE_BINARY_DIR}/CPM.cmake)
+include(${CMAKE_BINARY_DIR}/CPM.cmake)
 
 # Add the CMake Format package from TheLartians
 cpmaddpackage(
@@ -24,7 +27,7 @@ cpmaddpackage(
 
 # This requires at least CMake 3.8 Set the standard for C++ to 17 and require
 # that it be available
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # This is used to enable conan integration.
