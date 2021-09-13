@@ -6,7 +6,8 @@ cmake_minimum_required(VERSION 3.8)
 project(CPlusPlusCodingExample)
 
 # CMake Package Management
-include(cmake/CPM.cmake)
+file(DOWNLOAD https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake ${CMAKE_BINARY_DIR}/CPM.cmake)
+include(${CMAKE_BINARY_DIR}/CPM.cmake)
 
 # Add the CMake Format package from TheLartians
 cpmaddpackage(
